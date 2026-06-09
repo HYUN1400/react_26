@@ -1,0 +1,24 @@
+USER CRUD 수행순서
+
+1) 컴포넌트 분리 (폴더 생성) => user
+
+2) UserList.tsx 파일 생성 => users 객체 정의 => 출력
+    => userList 함수 생성 후 필요한 users 객체를 정의
+    => 한 사람의 객체를 출력하는 User 컴포넌트 생성
+    => props로 user 객체를 전달하여 출력
+    => props로 전달되는 객체 타입 정의
+    => user 객체타입, props 객체타입
+
+user CRUD
+- app / type / user.ts 파일 생성 => userType 정의 export
+
+1) UserList2.tsx 파일 생성 => CRUD가 실행되는 대상
+    => users 객체의 변화를 주기 위해 useState()로 users 관리
+    
+    UserList2 => UserList1 => User 순서대로 컴포넌트 작성
+    UserList2 => CreateUser
+
+2) userList1 컴포넌트 생성 => users 배열을 props로 받아서 컴포넌트 생성
+    => users props에 대한 타입을 정의
+
+4) createUser 컴포넌트 생성
