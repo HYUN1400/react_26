@@ -13,11 +13,12 @@ export default function Header(){
                 className="text-lg font-black"
                 ><Link href="/">NEXT.JS</Link></div>
                 <div
-                className="flex flex-row gap-10 text-white-500 text-sm font-semibold"
+                className="flex flex-row gap-10 text-white-500 text-sm font-medium"
                 >
-                   <Link href="/comp1">comp1</Link>
-                   <Link href="/comp2">comp2</Link>
-                   <Link href="/comp3">comp3</Link>
+                   <Link href="/comp1" className="hover:text-blue-200 transition">LIST</Link>
+                   <Link href="/comp2" className="hover:text-blue-200 transition">COUNT</Link>
+                   <Link href="/comp3" className="hover:text-blue-200 transition">PARAM</Link>
+                   <Link href="/comp4" className="hover:text-blue-200 transition">TODO</Link>
                 </div>
             </nav>
         </div>

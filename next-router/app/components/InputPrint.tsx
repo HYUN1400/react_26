@@ -10,7 +10,7 @@ export default function InputPrint(){
 
     return(
         <div
-        className="flex flex-col justify-center items-center border border-dashed border-blue-500 rounded w-100 h-50 gap-3 bg-blue-50">           
+        className="flex flex-col justify-center items-center border border-dashed border-blue-500 rounded w-100 h-auto py-5 gap-3 bg-blue-50">           
             <div
             className="mb-5 font-bold border px-10 py-2 text-blue-500 mr-auto ml-5 bg-white"
             >INPUT</div>
@@ -23,7 +23,7 @@ export default function InputPrint(){
             />
 
             <div
-            className="font-bold italic"
+            className="font-bold italic px-3 break-all"
             >👉 {text}</div>
         </div>
     )
