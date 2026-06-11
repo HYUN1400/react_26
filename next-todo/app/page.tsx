@@ -1,5 +1,5 @@
 "use client"
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { todolist } from "./data/todolist";
 import TodoPrint from "./components/TodoPrint";
 import TodoInput from "./components/TodoInput";
@@ -75,6 +75,8 @@ export default function Home() {
   //   )
   // }
 
+  const completedTask = useMemo(() => todos.filter((todo) => todo.completed).length, [todos])
+  const unCompletedTask = useMemo(() => todos.filter((todo) => !todo.completed).length, [todos])
 
   // RETURN
 
@@ -87,7 +89,8 @@ export default function Home() {
                 [&::-webkit-scrollbar-track]:bg-blue-100
                 [&::-webkit-scrollbar-thumb]:bg-blue-400
                 [&::-webkit-scrollbar-thumb]:rounded-full
-                hover:[&::-webkit-scrollbar-thumb]:bg-blue-500"
+                hover:[&::-webkit-scrollbar-thumb]:bg-blue-500
+                "
       >
         
         <div
@@ -112,7 +115,24 @@ export default function Home() {
             deadline = {deadline}
           />
 
-          <div className="mb-12"></div>
+          <div
+          className="flex flex-row gap-3 mt-2"
+          >
+            <div
+            className="flex items-center justify-center bg-blue-500 w-10 h-10 p-3 mt-5 rounded-full text-white text-center font-bold"  
+            >
+              {completedTask}
+            </div>
+            <div
+            className="flex items-center justify-center bg-white w-10 h-10 p-3 mt-5 rounded-full text-blue-500 text-center font-bold border-2"
+            >
+              {unCompletedTask}
+            </div>
+          </div>
+
+          <hr
+          className="w-140 border-dashed border-2 border-blue-200 my-8"
+          />
 
           <TodoPrint 
             todos={todos}

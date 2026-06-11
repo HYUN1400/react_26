@@ -1,0 +1,95 @@
+{* 수행순서 *}
+
+next.js(서버) <-> DB 연결
+
+1)
+- 설치 라이브러리
+npm i mysql2 => DB
+npm i axios => 비동기통신(fetch 내장함수를 사용 한다면 설치 불필요)
+
+{* 데이터 베이스 생성 *}
+
+2)
+DB명 => react
+user => reactUser
+password => react
+host => localhost
+port => 3306
+
+- board 테이블 생성
+id: int pk
+title: varchar(200) not null
+contents: text
+writer: varchar(100)
+reg_date: datetime(now)
+
+
+3) 폴더 구성 
+    -app내부
+        components > layout > Header.tsx / Footer.tsx 
+        components > board > BoardList.tsx
+        (라우팅 폴더) > page.tsx ...
+        data > data.ts (sample data)
+        type > boardType.ts
+        api > DB 연결 구문
+        lib > db.ts(DB 설정 구문)
+
+    -next-board내부
+        .env.local (숨김파일)
+
+4) 파일 구성
+Header > 글쓰기, 게시글 보기
+
+글쓰기 > 등록
+리스트 > 게시글마다 링크 > 상세페이지
+상세페이지 > 수정 > 상세페이지
+상세페이지 > 삭제 > 리스트
+수정페이지 > 완료 > 상세페이지
+
+-리스트페이지
+-글쓰기페이지 => input
+-상세페이지
+-수정페이지 => input
+
+5) layout 구성
+
+    {* 라우팅 경로 *}
+    (1) / => home
+    (2) /board => boardList
+    (3) /board/[id] => 상세페이지
+    (4) /board/write => 글쓰기 페이지
+    (5) /board/[id]/modify => 수정페이지
+
+    => components > layout > header.tsx / footer.tsx
+    => 하단 버튼 home(/), add(/board/write)
+
+
+
+{* DB 연결 *}
+
+.env 파일 작성 규칙
+react에서는 변수명 REACT_APP_ 으로 시작
+next에서는 변수명 NEXT_PUBLIC_ 으로 시작
+변수명과 변수값 사이에는 공백 또는 따옴표(" ") 가 존재하면 X 
+변수명은 대문자로 쓰는 것이 관례
+
+파일은 프로젝트 폴더에 생성 => .env.local
+
+lib > db.ts 파일 생성
+    DB 설정 사항 작성
+    => .env.local 자동으로 호출
+    => api key, password, server url ... 등 숨겨야 하는 내용 관리
+
+api 경로 => 서버로 DB 자료를 요청
+    => /api/board
+- boardList => /api/board
+    api > board > route.ts
+-boardDetail => /api/board/[id]
+    api > board > [id] > route.ts
+
+
+
+{* 글쓰기 *}
+board > write > page.tsx => /board/write 
+=> 컴포넌트 생성
+=> api/board => method POST(등록)
