@@ -93,3 +93,10 @@ api 경로 => 서버로 DB 자료를 요청
 board > write > page.tsx => /board/write 
 => 컴포넌트 생성
 => api/board => method POST(등록)
+
+
+{* 상세페이지 *}
+board > [id] > page.tsx (/board/[id])
+=> 컴포넌트 생성
+=> /api/board/[id] => method GET(요청)
+=> useEffect() 게시글 객체 출력

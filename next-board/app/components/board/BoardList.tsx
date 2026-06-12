@@ -40,7 +40,7 @@ export default function BoardList(){
 
         return(
             <div
-                className="flex flex-col gap-4 w-full"
+                className="flex flex-col gap-5 w-full"
             >
                 <div
                 className="text-2xl font-bold text-white bg-blue-400 rounded-full w-35 px-3 py-2 text-center mb-7"
@@ -48,28 +48,43 @@ export default function BoardList(){
                     게시글 목록
                 </div>
 
-                {contents.map((content) => (
-                    <Link
-                        href={`/`}
-                        key={content.id}
-                        className="border-2 border-blue-400 py-2 rounded-xl
-                                    bg-white
-                                    hover:bg-blue-400
-                                    hover:translate-px
-                                    group
-                                    transition"
-                    >
+                {contents.map((content, index) => (
+                    <div
+                    className="flex flex-row w-full justify-between gap-4 items-center"
+                    key={content.id}
+                    >  
                         <div
-                        className="flex flex-row justify-between items-center px-4"
+                        className=" text-white
+                                    font-extrabold
+                                    w-5
+                                    [text-shadow:_1px_1px_0_#3b82f6,_-1px_1px_0_#3b82f6,_1px_-1px_0_#3b82f6,_-1px_-1px_0_#3b82f6]
+                        "
                         >
-                            <div 
-                                className="text-gray-800 font-medium group-hover:text-white"
-                            >{content.title}</div>
+                            {contents.length - index} .
+                        </div>         
+                        <Link
+                            href={`/board/${content.id}`}
+                            className="border-2 border-blue-400 py-2 rounded-xl
+                                        bg-gradient-to-r from-white from-82% to-blue-400 to-80%
+                                        hover:shadow
+                                        hover:translate-px
+                                        group
+                                        transition
+                                        w-full
+                                        "
+                        >
                             <div
-                                className="text-sm text-blue-400 group-hover:text-white tracking-wider"
-                            >{content.writer}</div>
-                        </div>
-                    </Link>
+                            className="flex flex-row justify-between items-center px-4"
+                            >
+                                <div 
+                                    className="text-gray-600 font-bold"
+                                >{content.title}</div>
+                                <div
+                                    className="text-xs text-white tracking-wider ml-auto"
+                                >{content.writer}</div>
+                            </div>
+                        </Link>
+                    </div>
                 ))}
                 
                 <div
